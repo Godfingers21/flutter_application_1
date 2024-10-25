@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "769051508866",
+    "project_id": "irl-game-7ac37",
+    "storage_bucket": "irl-game-7ac37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769051508866:android:6e10336458ea046312749b",
+        "android_client_info": {
+          "package_name": "com.example.irlgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769051508866-nl7ikbc5ltegkmrhgu86216oeehlmqa9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.irlgame",
+            "certificate_hash": "0d3d6c210c33566c7b65b080b8884a5a2efd0201"
+          }
+        },
+        {
+          "client_id": "769051508866-8ougv9pko76eqhfrmn9rc6ahs5i5drtk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1pL5cUWMl9IBLxi3LWPFsSdqc7c_WMf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769051508866-8ougv9pko76eqhfrmn9rc6ahs5i5drtk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "769051508866-ve0obh26hma91fjf969p76vbbr558d7h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplication1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
