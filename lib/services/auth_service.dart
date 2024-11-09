@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+  
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -22,7 +24,7 @@ class AuthService {
         idToken: googleAuth.idToken,
       );
 
-      final UserCredential userCredential = await _firebaseAuth.signInWithCredential(credential);
+      final UserCredential userCredential = await _firebaseAuth.signInWithCredential(credential); // Enregistre le token FCM après la connexion
       return userCredential.user;
     } catch (e) {
       return null;
@@ -32,7 +34,7 @@ class AuthService {
   // Register with email and password
   Future<User?> registerWithEmailAndPassword(String email, String password) async {
     try {
-      UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password); // Enregistre le token FCM après l'enregistrement
       return result.user;
     } catch (e) {
       return null; // Gérer les erreurs de manière appropriée
@@ -42,7 +44,7 @@ class AuthService {
   // Sign in with email and password
   Future<User?> signInWithEmailAndPassword(String email, String password) async {
     try {
-      UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password); // Enregistre le token FCM après la connexion
       return result.user;
     } catch (e) {
       return null; // Gérer les erreurs de manière appropriée

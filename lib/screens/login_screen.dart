@@ -11,7 +11,7 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState(){
+  State<LoginScreen> createState() {
     return _LoginScreenState();
   }
 }
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Center(
-        child: _isLoading 
+        child: _isLoading
             ? const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 20),
                   Text("Connexion en cours..."),
                 ],
-              ) 
+              )
             : Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -74,13 +74,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: const InputDecoration(labelText: 'Password'),
                       obscureText: true,
                     ),
-                    const SizedBox(height: 5,),
+                    const SizedBox(
+                      height: 5,
+                    ),
                     ElevatedButton(
                       onPressed: () async {
                         setState(() {
                           _isLoading = true; // Démarre le chargement
                         });
-                        final user = await authService.signInWithEmailAndPassword(
+                        final user =
+                            await authService.signInWithEmailAndPassword(
                           _emailController.text,
                           _passwordController.text,
                         );
@@ -88,22 +91,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           _isLoading = false; // Arrête le chargement
                         });
                         if (user != null) {
-
                           //Try to save UserData if it don't exist already
                           await _saveUserData();
 
                           // Rediriger vers l'écran d'accueil
-                          if(context.mounted) {
+                          if (context.mounted) {
                             Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (context) => const AccueilScreen()),
-                            (Route<dynamic> route) => false,
-                          );
+                              MaterialPageRoute(
+                                  builder: (context) => const AccueilScreen()),
+                              (Route<dynamic> route) => false,
+                            );
                           }
                         } else {
-                          if(context.mounted) {
+                          if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Login failed')),
-                          );
+                              const SnackBar(content: Text('Login failed')),
+                            );
                           }
                         }
                       },
@@ -113,12 +116,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         // Naviguer vers la page d'inscription
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterScreen()),
                         );
                       },
                       child: const Text('Don\'t have an account? Register'),
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     SignInButton(
                       Buttons.google,
                       text: "Sign in with Google",
@@ -127,22 +133,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           _isLoading = true; // Démarre le chargement
                         });
                         final user = await authService.signInWithGoogle();
-                        setState(() {
-                          _isLoading = false; // Arrête le chargement
-                        });
                         if (user != null) {
                           await _saveUserData();
-                          if(context.mounted) {
+                          setState(() {
+                            _isLoading = false; // Arrête le chargement
+                          });
+                          if (context.mounted) {
                             Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (context) => const AccueilScreen()),
-                            (Route<dynamic> route) => false,
-                          );
+                              MaterialPageRoute(
+                                  builder: (context) => const AccueilScreen()),
+                              (Route<dynamic> route) => false,
+                            );
                           }
                         } else {
-                          if(context.mounted) {
+                          setState(() {
+                            _isLoading = false; // Arrête le chargement
+                          });
+                          if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Login failed')),
-                          );
+                              const SnackBar(content: Text('Login failed')),
+                            );
                           }
                         }
                       },

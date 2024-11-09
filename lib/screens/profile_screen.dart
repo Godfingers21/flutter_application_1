@@ -16,7 +16,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen>{
   int points = 0;
   int survivalChain = 0;
-
+  String name = "";
   @override
   void initState(){
     super.initState();
@@ -32,6 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
         setState(() {
           points = userDoc['points'] ?? 0;
           survivalChain = userDoc['survivalChain'] ?? 0;
+          name = userDoc['name'] ?? "";
         });
       }
     }
@@ -50,9 +51,9 @@ class _ProfileScreenState extends State<ProfileScreen>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Profil et Score',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Text(
+              'Score de $name',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             Text('Points : $points'),

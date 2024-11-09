@@ -39,6 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'points': 0,
           'survivalChain': 0,
           'group': '', // Set group later
+          'role':'Normal'
         });
       }
     }
@@ -76,11 +77,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _emailController.text,
                           _passwordController.text,
                         );
-                        setState(() {
-                          _isLoading = false; // Arrête le chargement
-                        });
+                    
                         if (user != null) {
                           await _saveUserData();
+                          setState(() {
+                          _isLoading = false; // Arrête le chargement
+                        });
                           // Rediriger vers l'écran d'accueil
                           if(context.mounted){
                           Navigator.of(context).pushAndRemoveUntil(
@@ -89,6 +91,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           );
                           }
                         } else {
+                          setState(() {
+                          _isLoading = false; // Arrête le chargement
+                        });
                           if(context.mounted){
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Registration failed')),

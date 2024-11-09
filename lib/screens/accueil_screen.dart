@@ -29,6 +29,7 @@ class AccueilScreen extends StatefulWidget {
     final uid = authService.currentUser?.uid;
 
     if (uid != null) {
+      print("Yeah he has an uid but not a name sad asf");
       DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('users').doc(uid).get();
       print(userSnapshot['name']);
 
@@ -92,19 +93,19 @@ class AccueilScreen extends StatefulWidget {
                   MaterialPageRoute(builder: (context) => const GroupListScreen()),
                 );
               },
-              child: const Text('Voir les Groupes'),
+              child: const Text('Groupe'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                print("go to profile");
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ProfileScreen()),
                 );
               },
-              child: const Text('Mon Profil'),
+              child: const Text('Profil'),
             ),
+            
           ],
         ),
       ),
