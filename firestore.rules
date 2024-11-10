@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Rules for user documents
+    match /users/{userId} {
+      // Allow the user to read and write their own document
+      allow read : if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Rules for group documents
+    match /groups/{groupId} {
+      // Allow read access to all authenticated users, but restrict writes
+      allow read,write: if request.auth != null;
+    }
+    
+    // Optional: Allow read access to everyone for public collections
+    // match /public/{document=**} {
+    //   allow read: if true; // Uncomment if you have public collections
+    // }
+    
+    // Default rule: deny all other access
+    match /{document=**} {
+      allow read, write: if false; // Deny access by default
+    }
+  }
+}

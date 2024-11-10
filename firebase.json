@@ -1,1 +1,45 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"irl-game-7ac37","appId":"1:769051508866:android:6e10336458ea046312749b","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"irl-game-7ac37","configurations":{"android":"1:769051508866:android:6e10336458ea046312749b","ios":"1:769051508866:ios:94cb091a63c1ecdb12749b","macos":"1:769051508866:ios:94cb091a63c1ecdb12749b","web":"1:769051508866:web:5ab1742b4c167a4412749b","windows":"1:769051508866:web:95352bb2cfde12f012749b"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "irl-game-7ac37",
+          "appId": "1:769051508866:android:6e10336458ea046312749b",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "irl-game-7ac37",
+          "configurations": {
+            "android": "1:769051508866:android:6e10336458ea046312749b",
+            "ios": "1:769051508866:ios:94cb091a63c1ecdb12749b",
+            "macos": "1:769051508866:ios:94cb091a63c1ecdb12749b",
+            "web": "1:769051508866:web:5ab1742b4c167a4412749b",
+            "windows": "1:769051508866:web:95352bb2cfde12f012749b"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
